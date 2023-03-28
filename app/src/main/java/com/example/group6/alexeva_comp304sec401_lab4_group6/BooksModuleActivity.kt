@@ -13,6 +13,7 @@ class BooksModuleActivity : AppCompatActivity() {
     private lateinit var educationalFragment: EducationalFragment
     private lateinit var historyFragment: HistoryFragment
     private lateinit var profileFragment: ProfileFragment
+    private lateinit var logOutFragment: LogOutFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +25,7 @@ class BooksModuleActivity : AppCompatActivity() {
         educationalFragment = EducationalFragment()
         historyFragment = HistoryFragment()
         profileFragment = ProfileFragment()
+        logOutFragment = LogOutFragment()
 
     }
 
@@ -61,6 +63,13 @@ class BooksModuleActivity : AppCompatActivity() {
             .commit()
     }
 
+    private fun loadLogOutFragment() {
+        supportFragmentManager.beginTransaction().replace(R.id.frameToLoad, logOutFragment)
+            .commit()
+    }
+
+
+
     //click books category from menu when user choose books type
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         //handle item selection
@@ -88,6 +97,10 @@ class BooksModuleActivity : AppCompatActivity() {
             R.id.menu_profile -> {
                 Toast.makeText(this, "You Selected Profile", Toast.LENGTH_SHORT).show()
                 loadProfileFragment()
+            }
+            R.id.menu_log_out -> {
+                Toast.makeText(this, "You Selected Log Out", Toast.LENGTH_SHORT).show()
+                loadLogOutFragment()
             }
             else -> return super.onOptionsItemSelected(item)
 

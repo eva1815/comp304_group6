@@ -25,4 +25,8 @@
         android:title="Profile"
         android:id="@+id/menu_profile"/>
 
+    <item
+        android:title="Log Out"
+        android:id="@+id/menu_log_out"/>
+
 </menu>
