@@ -18,13 +18,13 @@
         android:id="@+id/edit_student_id_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_studentid"/>
+        android:hint="@string/hint_student_id"/>
 
     <EditText
         android:id="@+id/edit_student_password_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_studentpassword"/>
+        android:hint="@string/hint_student_password"/>
 
     <EditText
         android:id="@+id/edit_student_firstName_input"

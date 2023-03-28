@@ -2,6 +2,7 @@ package com.example.group6.alexeva_comp304sec401_lab4_group6.model
 
 import androidx.lifecycle.LiveData
 import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Books
+import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Librarian
 import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Student
 import com.example.group6.alexeva_comp304sec401_lab4_group6.model.dao.BooksDao
 import com.example.group6.alexeva_comp304sec401_lab4_group6.model.dao.LibrarianDao
@@ -14,7 +15,7 @@ class DatabaseRepository(private val librarianDao: LibrarianDao, private val stu
     // Room executes all queries on a separate thread.
     // Observed Flow will notify the observer when the data has changed.
     // You can use LiveData instead and will notify the observer when there's a change
-
+//------------------------------Books---------------------------------------------//
     val allBooksFromDB: LiveData<List<Books>> = booksDao.getBooksFromDB()
 
     // By default Room runs suspend queries off the main thread, therefore, we don't need to
@@ -34,7 +35,13 @@ class DatabaseRepository(private val librarianDao: LibrarianDao, private val stu
     suspend fun delete(books: Books) {
         booksDao.delete(books)
     }
+//---------------------------------Librarian---------------------------------------------//
+  //  val allLibrarianFromDB:LiveData<List<Librarian>> = librarianDao.getBooksFromDB()
 
+
+
+
+//--------------------------------Student-----------------------------------------------//
     val allStudentFromDB: LiveData<List<Student>> = studentDao.getStudentFromDB()
 
     // By default Room runs suspend queries off the main thread, therefore, we don't need to
