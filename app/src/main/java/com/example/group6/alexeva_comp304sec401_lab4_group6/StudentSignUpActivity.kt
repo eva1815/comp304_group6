@@ -11,7 +11,7 @@ import com.example.group6.alexeva_comp304sec401_lab4_group6.R
 
 class StudentSignUpActivity : AppCompatActivity() {
     private lateinit var studentSignUpButton: Button
-
+    private lateinit var backToHomeButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_sign_up)
@@ -24,12 +24,20 @@ class StudentSignUpActivity : AppCompatActivity() {
         imageSignUpLogo.setImageResource(R.drawable.sign_up_logo)
 
         studentSignUpButton = findViewById(R.id.btn_student_sign_up_success)
+        backToHomeButton = findViewById(R.id.btn_back_to_home_page)
 
         studentSignUpButton.setOnClickListener{
             Log.i("TAG", "Sign Up button was Clicked!")
             val intent = Intent(this, StudentLoginActivity::class.java)
             startActivity(intent)
         }
+
+        backToHomeButton.setOnClickListener {
+            Log.i("TAG", "Home button was Clicked!")
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 }
