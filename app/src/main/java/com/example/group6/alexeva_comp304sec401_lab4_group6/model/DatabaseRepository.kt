@@ -14,25 +14,27 @@ class DatabaseRepository(private val librarianDao: LibrarianDao, private val stu
     // Room executes all queries on a separate thread.
     // Observed Flow will notify the observer when the data has changed.
     // You can use LiveData instead and will notify the observer when there's a change
-    val allBooksFromDB: LiveData<List<Books>> = librarianDao.getBooksFromDB()
+
+    val allBooksFromDB: LiveData<List<Books>> = booksDao.getBooksFromDB()
 
     // By default Room runs suspend queries off the main thread, therefore, we don't need to
     // implement anything else to ensure we're not doing long running database work
     // off the main thread.
 
     suspend fun insert(books: Books) {
-        librarianDao.insert(books)
+        booksDao.insert(books)
     }
 
     //not sure whether the librarian need to update bookId here?
     suspend fun update(books: Books) {
         println("REPOSITORY ${books.bookName} - ${books.authorName} - ${books.bookDescription} - ${books.category} - ${books.quantity}")
-        librarianDao.update(books)
+        booksDao.update(books)
     }
 
     suspend fun delete(books: Books) {
-        librarianDao.delete(books)
+        booksDao.delete(books)
     }
+
     val allStudentFromDB: LiveData<List<Student>> = studentDao.getStudentFromDB()
 
     // By default Room runs suspend queries off the main thread, therefore, we don't need to
@@ -42,4 +44,6 @@ class DatabaseRepository(private val librarianDao: LibrarianDao, private val stu
     suspend fun insert(student: Student) {
         studentDao.insert(student)
     }
+
+
 }
