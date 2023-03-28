@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Centennial College Library</string>
+    <string name="button_librarian_login">Librarian Login</string>
+    <string name="button_student_login">Student Login</string>
+    <string name="textview_new_here_please_sign_up">New here? Please Sign Up</string>
+    <string name="button_student_sign_up">Student Sign Up</string>
+    <string name="msg_home_page">Welcome to Centennial College Library</string>
+    <string name="msg_sign_up_page">Welcome to Sign Up Page</string>
+    <string name="hint_studentid">StudentID</string>
+    <string name="hint_studentpassword">StudentPassword</string>
+    <string name="hint_firstname">FirstName</string>
+    <string name="hint_lastname">LastName</string>
+    <string name="btn_home_page">Home</string>
+    <string name="msg_student_login">Welcome to Student Login Page</string>
+    <string name="btn_student_login">Student Login</string>
+</resources>

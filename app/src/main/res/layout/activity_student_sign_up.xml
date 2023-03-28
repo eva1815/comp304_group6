@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".StudentSignUpActivity">
+
+    <ImageView
+        android:id="@+id/image_sign_up_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="219dp"
+        android:src="@drawable/sign_up_logo" />
+
+    <EditText
+        android:id="@+id/edit_student_id_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_studentid"/>
+
+    <EditText
+        android:id="@+id/edit_student_password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_studentpassword"/>
+
+    <EditText
+        android:id="@+id/edit_student_firstName_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_firstname"/>
+
+    <EditText
+        android:id="@+id/edit_student_lastName_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_lastname"/>
+
+    <Button
+        android:id="@+id/btn_student_sign_up_success"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_student_sign_up"/>
+
+
+    <Button
+        android:id="@+id/btn_back_to_home_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_home_page"/>
+
+
+</LinearLayout>
