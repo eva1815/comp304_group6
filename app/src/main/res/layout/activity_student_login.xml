@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".StudentLoginActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:padding="16dp"
+    >
 
     <ImageView
         android:id="@+id/image_student_login_logo"
@@ -18,19 +20,27 @@
         android:id="@+id/edit_student_id_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_studentid"/>
+        android:background="@drawable/edit_text_border"
+        android:padding="10dp"
+        android:inputType="text"
+        android:hint="@string/hint_student_id"/>
 
     <EditText
         android:id="@+id/edit_student_password_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_studentpassword"/>
+        android:background="@drawable/edit_text_border"
+        android:padding="10dp"
+        android:layout_marginTop="5dp"
+        android:hint="@string/hint_student_password"/>
 
 
     <Button
         android:id="@+id/btn_student_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+
         android:text="@string/btn_student_login"/>
 
 </LinearLayout>
