@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Student
-import com.example.group6.alexeva_comp304sec401_lab4_group6.model.StudentRepository
+import com.example.group6.alexeva_comp304sec401_lab4_group6.model.LibrarianRepository
 import kotlinx.coroutines.launch
 
-class StudentViewModel(private val repository: StudentRepository):ViewModel() {
+class StudentViewModel(private val repository: LibrarianRepository):ViewModel() {
     // Using LiveData and caching what allWords returns has several benefits:
     // - We can put an observer on the data (instead of polling for changes) and only update the
     //   the UI when the data actually changes.
