@@ -11,6 +11,7 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
     private lateinit var studentSignUpButton: Button
     private lateinit var librarianLoginButton : Button
+    private lateinit var studentLoginButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +24,17 @@ class MainActivity : AppCompatActivity() {
         // Display an image on image view from resource
         imageCollegeLogo.setImageResource(R.drawable.college_logo)
 
+        studentLoginButton = findViewById(R.id.btn_student_login)
         studentSignUpButton = findViewById(R.id.btn_student_sign_up)
         librarianLoginButton = findViewById(R.id.btn_librarian_login)
+
+        studentLoginButton = findViewById(R.id.btn_student_login)
+
+        studentLoginButton.setOnClickListener {
+            Log.i("TAG", "Student Login button was Clicked!")
+            val intent = Intent(this,StudentLoginActivity::class.java)
+            startActivity(intent)
+        }
 
         studentSignUpButton.setOnClickListener{
             Log.i("TAG", "Sign Up button was Clicked!")
@@ -36,6 +46,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LibrarianLoginActivity::class.java)
             startActivity(intent)
         }
+
 
     }
 }

@@ -1,13 +1,16 @@
 package com.example.group6.alexeva_comp304sec401_lab4_group6
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 
 class StudentLoginActivity : AppCompatActivity() {
+
     private lateinit var editTextStudentId: EditText
     private lateinit var editTextStudentPassword: EditText
     private lateinit var buttonStudentLogin: Button
@@ -22,6 +25,13 @@ class StudentLoginActivity : AppCompatActivity() {
         // Display an image on image view from resource
         imageSignInLogo.setImageResource(R.drawable.student_login)
 
+        buttonStudentLogin = findViewById(R.id.btn_student_login)
+
+        buttonStudentLogin.setOnClickListener {
+            Log.i("TAG", "Student Login Successfully!")
+            val intent = Intent(this,BooksModuleActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
