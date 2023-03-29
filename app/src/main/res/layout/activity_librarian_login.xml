@@ -17,6 +17,7 @@
 
         />
     <EditText
+        android:id="@+id/librarian_login_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_border"
@@ -24,6 +25,7 @@
         android:inputType="text"
         android:hint="@string/librarian_id"/>
     <EditText
+        android:id="@+id/librarian_login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edit_text_border"

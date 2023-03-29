@@ -12,7 +12,11 @@ class ViewModelFactory(private val repository: DatabaseRepository):ViewModelProv
         if (modelClass.isAssignableFrom(StudentViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
             return StudentViewModel(repository) as T
-}
+        }
+        if (modelClass.isAssignableFrom(LibrarianViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return LibrarianViewModel(repository) as T
+        }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

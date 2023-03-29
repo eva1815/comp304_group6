@@ -6,8 +6,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "librarian_table")
 class Librarian (
-        @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "librarianId")
-        val librarianId: Int?,
+        // I deleted (autoGenerate = true) to make it not auto Generate
+        // Librarian table will be input manually
+        @PrimaryKey @ColumnInfo(name = "librarianId")
+        val librarianId: String,
 
         @ColumnInfo(name = "firstname")
         var firstname: String,

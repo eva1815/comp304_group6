@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         studentSignUpButton = findViewById(R.id.btn_student_sign_up)
         librarianLoginHomePageButton = findViewById(R.id.btn_librarian_login_home_page)
 
-        studentLoginButton = findViewById(R.id.btn_student_login)
 
         studentLoginButton.setOnClickListener {
             Log.i("TAG", "Student Login button was Clicked!")

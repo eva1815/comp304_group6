@@ -18,6 +18,8 @@ class DatabaseRepository(private val librarianDao: LibrarianDao, private val stu
 //------------------------------Books---------------------------------------------//
     val allBooksFromDB: LiveData<List<Books>> = booksDao.getBooksFromDB()
 
+
+
     // By default Room runs suspend queries off the main thread, therefore, we don't need to
     // implement anything else to ensure we're not doing long running database work
     // off the main thread.
@@ -25,6 +27,7 @@ class DatabaseRepository(private val librarianDao: LibrarianDao, private val stu
     suspend fun insert(books: Books) {
         booksDao.insert(books)
     }
+
 
     //not sure whether the librarian need to update bookId here?
     suspend fun update(books: Books) {
@@ -36,8 +39,24 @@ class DatabaseRepository(private val librarianDao: LibrarianDao, private val stu
         booksDao.delete(books)
     }
 //---------------------------------Librarian---------------------------------------------//
-  //  val allLibrarianFromDB:LiveData<List<Librarian>> = librarianDao.getBooksFromDB()
 
+    val allLibrarianFromDB:LiveData<List<Librarian>> = librarianDao.getLibrarianFromDB()
+
+
+    suspend fun insert(librarian: Librarian) {
+        librarianDao.insert(librarian)
+    }
+    suspend fun update(librarian: Librarian) {
+        println("REPOSITORY ${librarian.librarianId} - ${librarian.firstname} - ${librarian.lastname} - ${librarian.password}")
+        librarianDao.update(librarian)
+    }
+
+    suspend fun delete(librarian: Librarian) {
+        librarianDao.delete(librarian)
+    }
+    fun getLibrarianById(id: String): LiveData<Librarian> {
+        return librarianDao.getLibrarianById(id)
+    }
 
 
 
