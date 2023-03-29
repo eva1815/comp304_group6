@@ -6,7 +6,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Books
 import com.example.group6.alexeva_comp304sec401_lab4_group6.model.dao.BooksDao
-import com.example.group6.alexeva_comp304sec401_lab4_group6.model.dao.StudentDao
 
 
 // Annotates class to be a Room Database with a table (entity) of the Word class

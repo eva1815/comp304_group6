@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".EducationalFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tv_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:textSize="22dp"
+        android:text="Educational"/>
 
-</FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView_id_books_educational_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:padding="4dp"
+            android:text="I Have Some Questions for You by Rebecca Makkai(Fiction)she knew something that might have held the key to solving the case." />
+
+        <TextView
+            android:id="@+id/textView_id_books_educational_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:padding="4dp"
+            android:text="A Day of Fallen Night by Samantha Shannon(Fiction)The dragons of the East have slept for centuries." />
+
+        <TextView
+            android:id="@+id/textView_id_books_educational_three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="40dp"
+            android:padding="4dp"
+            android:text="The Last Tale of the Flower Bride by Roshani Chokshi(Fiction)Once upon a time, a man who believed in fairy tales married a beautiful" />
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

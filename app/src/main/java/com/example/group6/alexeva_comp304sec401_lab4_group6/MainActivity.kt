@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         }
         librarianLoginButton.setOnClickListener {
             Log.i("TAG", "Sign Up button was Clicked!")
-            val intent = Intent(this, LibrarianLoginActivity::class.java)
+            val intent = Intent(this, BooksModuleActivity::class.java)
             startActivity(intent)
         }
 

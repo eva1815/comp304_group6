@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,7 +28,6 @@
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="40dp"
             android:padding="4dp"
-            android:layout_toLeftOf="@+id/image_id_delete"
             android:text="I Have Some Questions for You by Rebecca Makkai(Fiction)she knew something that might have held the key to solving the case." />
 
      <TextView
@@ -39,25 +39,22 @@
          android:layout_marginEnd="40dp"
          android:layout_marginBottom="40dp"
          android:padding="4dp"
-         android:layout_toLeftOf="@+id/image_id_delete"
-         android:text="I Have Some Questions for You by Rebecca Makkai(Fiction)she knew something that might have held the key to solving the case." />
+         android:text="A Day of Fallen Night by Samantha Shannon(Fiction)The dragons of the East have slept for centuries." />
 
-     <ImageView
-         android:id="@+id/image_id_delete"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:src="@drawable/image_delete"
-         android:layout_alignParentEnd="true"
-         android:layout_alignParentRight="true"
-         android:layout_marginTop="50dp"/>
-
-     <Button
+     <TextView
+         android:id="@+id/textView_id_books_fiction_three"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_marginTop="500dp"
-         android:text="Add" />
+         android:layout_marginStart="40dp"
+         android:layout_marginTop="160dp"
+         android:layout_marginEnd="40dp"
+         android:layout_marginBottom="40dp"
+         android:padding="4dp"
+         android:text="The Last Tale of the Flower Bride by Roshani Chokshi(Fiction)Once upon a time, a man who believed in fairy tales married a beautiful" />
+
+
 
  </RelativeLayout>
 
 
-</androidx.cardview.widget.CardView>
+</RelativeLayout>

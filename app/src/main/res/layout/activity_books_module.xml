@@ -13,11 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/id_rv_books"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:listitem="@layout/fragment_fiction"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/id_rv_books"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/fragment_fiction"/>
+
+    <Button
+        android:id="@+id/btn_id_add_books"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp"
+        android:text="Add" />
 
 
 </RelativeLayout>

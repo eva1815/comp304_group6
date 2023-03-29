@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 
 class BooksModuleActivity : AppCompatActivity() {
     private lateinit var allBooksFragment: AllBooksFragment
@@ -14,7 +15,7 @@ class BooksModuleActivity : AppCompatActivity() {
     private lateinit var historyFragment: HistoryFragment
     private lateinit var profileFragment: ProfileFragment
     private lateinit var logOutFragment: LogOutFragment
-
+    private lateinit var booksRecyclerView: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_books_module)
@@ -26,6 +27,7 @@ class BooksModuleActivity : AppCompatActivity() {
         historyFragment = HistoryFragment()
         profileFragment = ProfileFragment()
         logOutFragment = LogOutFragment()
+        booksRecyclerView = findViewById(R.id.id_rv_books)
 
     }
 
