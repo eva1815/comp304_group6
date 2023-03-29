@@ -10,7 +10,7 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     private lateinit var studentSignUpButton: Button
-    private lateinit var librarianLoginButton : Button
+    private lateinit var librarianLoginHomePageButton : Button
     private lateinit var studentLoginButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         studentLoginButton = findViewById(R.id.btn_student_login)
         studentSignUpButton = findViewById(R.id.btn_student_sign_up)
-        librarianLoginButton = findViewById(R.id.btn_librarian_login)
+        librarianLoginHomePageButton = findViewById(R.id.btn_librarian_login_home_page)
 
         studentLoginButton = findViewById(R.id.btn_student_login)
 
@@ -41,9 +41,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, StudentSignUpActivity::class.java)
             startActivity(intent)
         }
-        librarianLoginButton.setOnClickListener {
+        librarianLoginHomePageButton.setOnClickListener {
             Log.i("TAG", "Sign Up button was Clicked!")
-            val intent = Intent(this, BooksModuleActivity::class.java)
+            val intent = Intent(this, LibrarianLoginActivity::class.java)
             startActivity(intent)
         }
 

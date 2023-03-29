@@ -17,7 +17,7 @@
         android:src="@drawable/college_logo"/>
 
     <Button
-        android:id="@+id/btn_librarian_login"
+        android:id="@+id/btn_librarian_login_home_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_librarian_login"/>
