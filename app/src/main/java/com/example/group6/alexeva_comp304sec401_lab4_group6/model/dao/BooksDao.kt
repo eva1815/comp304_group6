@@ -9,7 +9,6 @@ interface BooksDao {
     @Query("SELECT * FROM books_table ORDER BY bookId ASC")
     fun getBooksFromDB(): LiveData<List<Books>>
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-
     suspend fun insert(books: Books)
 
     // update books

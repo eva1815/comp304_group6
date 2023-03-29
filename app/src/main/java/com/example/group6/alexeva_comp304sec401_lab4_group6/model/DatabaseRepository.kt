@@ -16,7 +16,7 @@ class DatabaseRepository(private val librarianDao: LibrarianDao, private val stu
     // Observed Flow will notify the observer when the data has changed.
     // You can use LiveData instead and will notify the observer when there's a change
 //------------------------------Books---------------------------------------------//
-    val allBooksFromDB: LiveData<List<Books>> = booksDao.getBooksFromDB()
+//    val allBooks: LiveData<List<Books>> = booksDao.getBooksFromDB()
 
 
 
@@ -24,20 +24,19 @@ class DatabaseRepository(private val librarianDao: LibrarianDao, private val stu
     // implement anything else to ensure we're not doing long running database work
     // off the main thread.
 
-    suspend fun insert(books: Books) {
-        booksDao.insert(books)
-    }
-
-
-    //not sure whether the librarian need to update bookId here?
-    suspend fun update(books: Books) {
-        println("REPOSITORY ${books.bookName} - ${books.authorName} - ${books.bookDescription} - ${books.category} - ${books.quantity}")
-        booksDao.update(books)
-    }
-
-    suspend fun delete(books: Books) {
-        booksDao.delete(books)
-    }
+//    suspend fun insert(books: Books) {
+//        booksDao.insert(books)
+//    }
+//
+//
+//    //not sure whether the librarian need to update bookId here?
+//    suspend fun update(books: Books) {
+//        booksDao.update(books)
+//    }
+//
+//    suspend fun delete(books: Books) {
+//        booksDao.delete(books)
+//    }
 //---------------------------------Librarian---------------------------------------------//
 
     val allLibrarianFromDB:LiveData<List<Librarian>> = librarianDao.getLibrarianFromDB()

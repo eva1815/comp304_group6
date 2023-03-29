@@ -1,13 +1,20 @@
 package com.example.group6.alexeva_comp304sec401_lab4_group6
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Books
+import com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel.BooksViewModel
 
-class BooksModuleActivity : AppCompatActivity() {
+class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, BooksClickInterface {
     private lateinit var allBooksFragment: AllBooksFragment
     private lateinit var fictionFragment: FictionFragment
     private lateinit var nonFictionFragment: NonFictionFragment
@@ -15,7 +22,10 @@ class BooksModuleActivity : AppCompatActivity() {
     private lateinit var historyFragment: HistoryFragment
     private lateinit var profileFragment: ProfileFragment
     private lateinit var logOutFragment: LogOutFragment
+
     private lateinit var booksRecyclerView: RecyclerView
+    private lateinit var addBooksButton:Button
+    private lateinit var viewModel: BooksViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_books_module)
@@ -28,7 +38,22 @@ class BooksModuleActivity : AppCompatActivity() {
         profileFragment = ProfileFragment()
         logOutFragment = LogOutFragment()
         booksRecyclerView = findViewById(R.id.id_rv_books)
+        addBooksButton = findViewById(R.id.btn_id_add_books)
+        booksRecyclerView.layoutManager = LinearLayoutManager(this)
 
+        val booksRVAdapter = BooksRVAdapter(this,this,this)
+        booksRecyclerView.adapter = booksRVAdapter
+        viewModel = ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(BooksViewModel::class.java)
+        viewModel.allBooks.observe(this, Observer{ list->
+            list?.let{
+                booksRVAdapter.updateList(it)
+            }
+        })
+        addBooksButton.setOnClickListener{
+            val intent = Intent(this@BooksModuleActivity,AddEditBooksActivity::class.java)
+            startActivity(intent)
+            this.finish()
+        }
     }
 
     //create menu of books category
@@ -109,5 +134,23 @@ class BooksModuleActivity : AppCompatActivity() {
         }
         return true
 
+    }
+
+    override fun onDeleteIconClick(books: Books) {
+    viewModel.deleteBooks(books)
+        Toast.makeText(this,"${books.bookName} Deleted",Toast.LENGTH_LONG).show()
+    }
+
+    override fun onBooksClick(books: Books) {
+        val intent = Intent(this@BooksModuleActivity,AddEditBooksActivity::class.java)
+        intent.putExtra("booksType","Edit")
+        intent.putExtra("bookName",books.bookName)
+        intent.putExtra("authorName",books.authorName)
+        intent.putExtra("bookDescription",books.bookDescription)
+        intent.putExtra("category",books.category)
+        intent.putExtra("quantity",books.quantity)
+        intent.putExtra("bookId", books.bookId)
+        startActivity(intent)
+        this.finish()
     }
 }

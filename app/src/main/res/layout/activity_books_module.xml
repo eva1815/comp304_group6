@@ -18,7 +18,7 @@
         android:id="@+id/id_rv_books"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/fragment_fiction"/>
+        tools:listitem="@layout/books_rv_item"/>
 
     <Button
         android:id="@+id/btn_id_add_books"

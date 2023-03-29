@@ -15,7 +15,8 @@ class LibrarianApplication : Application() {
     private val librarianDatabase by lazy { LibrarianRoomDB.getDatabase(this) }
     private val studentDatabase by lazy { StudentRoomDB.getDatabase(this) }
     private val booksDatabase by lazy { BooksRoomDB.getDatabase(this) }
-    val repository by lazy { DatabaseRepository(librarianDatabase.librarianDao(), studentDatabase.studentDao(),booksDatabase.booksDao()) }
+    val repository by lazy { DatabaseRepository(librarianDatabase.librarianDao(),
+        studentDatabase.studentDao(),booksDatabase.booksDao()) }
 
     override fun onCreate() {
         super.onCreate()

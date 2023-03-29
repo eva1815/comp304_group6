@@ -13,6 +13,9 @@
         android:name=".viewModel.LibrarianApplication"
         tools:targetApi="31">
         <activity
+            android:name=".AddEditBooksActivity"
+            android:exported="false" />
+        <activity
             android:name=".BooksModuleActivity"
             android:exported="false" />
         <activity

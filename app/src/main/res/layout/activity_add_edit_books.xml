@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddEditBooksActivity">
+
+    <EditText
+        android:id="@+id/editText_id_books_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Books Title"
+        android:layout_margin="10dp"/>
+
+
+    <EditText
+        android:id="@+id/editText_id_books_author_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Author Name"
+        android:layout_below="@+id/editText_id_books_title"
+        android:layout_margin="10dp"/>
+
+
+    <EditText
+        android:id="@+id/editText_id_books_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Books Description"
+        android:layout_below="@+id/editText_id_books_author_name"
+        android:layout_margin="10dp"/>
+
+
+    <EditText
+        android:id="@+id/editText_id_books_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Books category"
+        android:layout_below="@+id/editText_id_books_description"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/editText_id_books_quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Books Quantity"
+        android:layout_below="@+id/editText_id_books_category"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/btn_id_add_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="false"/>
+
+
+</RelativeLayout>

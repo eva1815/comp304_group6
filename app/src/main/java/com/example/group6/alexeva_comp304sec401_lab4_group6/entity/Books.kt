@@ -5,9 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "books_table")
-class Books (
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "bookId")
-    val bookId: Int?,
+class Books(
 
     @ColumnInfo(name = "bookName")
     var bookName: String,
@@ -22,5 +20,8 @@ class Books (
     var category: String,
 
     @ColumnInfo(name = "quantity")
-    var quantity: Int
-)
+    var quantity: String
+){
+    @PrimaryKey(autoGenerate = true)
+    var bookId=0
+}
