@@ -69,6 +69,9 @@ class DatabaseRepository(private val librarianDao: LibrarianDao, private val stu
     suspend fun insert(student: Student) {
         studentDao.insert(student)
     }
+    fun getStudentById(id: Int): LiveData<Student> {
+        return studentDao.getStudentById(id)
+    }
 
 
 }

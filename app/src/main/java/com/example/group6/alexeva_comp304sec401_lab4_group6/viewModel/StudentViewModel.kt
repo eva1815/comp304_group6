@@ -3,6 +3,7 @@ package com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Librarian
 import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Student
 import com.example.group6.alexeva_comp304sec401_lab4_group6.model.DatabaseRepository
 import kotlinx.coroutines.launch
@@ -20,6 +21,9 @@ class StudentViewModel(private val repository: DatabaseRepository):ViewModel() {
      */
     fun insert(student: Student) = viewModelScope.launch {
         repository.insert(student)
+    }
+    fun getStudentById(id: Int): LiveData<Student> {
+        return repository.getStudentById(id)
     }
 
 

@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Books
+import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Librarian
 import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Student
 
 @Dao
@@ -18,6 +19,8 @@ interface StudentDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(student: Student)
 
+    @Query("SELECT * FROM student_table WHERE studentId = :id")
+    fun getStudentById(id: Int): LiveData<Student>
 
 
 }
