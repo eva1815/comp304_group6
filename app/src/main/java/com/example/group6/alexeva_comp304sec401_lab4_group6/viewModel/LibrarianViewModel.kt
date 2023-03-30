@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Librarian
 import com.example.group6.alexeva_comp304sec401_lab4_group6.model.DatabaseRepository
-import com.example.group6.alexeva_comp304sec401_lab4_group6.model.db.LibrarianRoomDB
 import kotlinx.coroutines.launch
 
 class LibrarianViewModel(private val repository: DatabaseRepository): ViewModel() {

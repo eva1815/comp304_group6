@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Books
 import com.example.group6.alexeva_comp304sec401_lab4_group6.model.BooksRepository
 import com.example.group6.alexeva_comp304sec401_lab4_group6.model.DatabaseRepository
-import com.example.group6.alexeva_comp304sec401_lab4_group6.model.db.BooksRoomDB
+import com.example.group6.alexeva_comp304sec401_lab4_group6.model.db.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -28,7 +28,7 @@ class BooksViewModel (application: Application):AndroidViewModel(application){
     val repository : BooksRepository
 
     init{
-        val dao = BooksRoomDB.getDatabase(application).booksDao()
+        val dao = AppDatabase.getDatabase(application).booksDao()
         repository = BooksRepository(dao)
         allBooks = repository.allBooks
     }
