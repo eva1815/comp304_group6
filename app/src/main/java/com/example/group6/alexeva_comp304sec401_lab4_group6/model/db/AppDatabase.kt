@@ -14,7 +14,7 @@ import com.example.group6.alexeva_comp304sec401_lab4_group6.model.dao.StudentDao
 
 @Database(
     entities = [Books::class, Librarian::class, Student::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -40,6 +40,7 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
     }
+
 
 
     // Add data to librarian Database

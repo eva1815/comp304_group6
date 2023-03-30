@@ -18,6 +18,5 @@ class Student (
     @ColumnInfo(name = "password")
     var password: String,
 
-    @ColumnInfo(name = "bookId")
-    val bookId: Int?
+
 )
