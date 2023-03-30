@@ -43,10 +43,5 @@ abstract class AppDatabase : RoomDatabase() {
 
 
 
-    // Add data to librarian Database
-//    suspend fun addSomeDummyData(){
-//        val librarianDao = librarianDao()
-//        librarianDao.insert(Librarian("001", "Yash", "Sheth", "COMP304"))
-//        librarianDao.insert(Librarian("007","James","Bond", "CasinoRoyale"))
-//    }
+
 }
