@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AlexEva_COMP304Sec401_Lab4_Group6"
-        android:name=".viewModel.LibrarianApplication"
+        android:name=".application.AppApplication"
         tools:targetApi="31">
         <activity
             android:name=".AddEditBooksActivity"

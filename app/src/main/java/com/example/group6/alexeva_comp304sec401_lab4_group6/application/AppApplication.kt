@@ -1,4 +1,4 @@
-package com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel
+package com.example.group6.alexeva_comp304sec401_lab4_group6.application
 
 import android.app.Application
 import com.example.group6.alexeva_comp304sec401_lab4_group6.model.DatabaseRepository
@@ -7,7 +7,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class LibrarianApplication : Application() {
+class AppApplication : Application() {
     // Using by lazy so the database and the repository are only created when they're needed
     // rather than when the application starts
     private val appDatabase by lazy { AppDatabase.getDatabase(this) }
@@ -20,5 +20,6 @@ class LibrarianApplication : Application() {
         CoroutineScope(Dispatchers.IO).launch {
 //            librarianDatabase.addSomeDummyData()
         }
+
     }
 }
