@@ -8,9 +8,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
-import com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel.LibrarianApplication
+import com.example.group6.alexeva_comp304sec401_lab4_group6.application.AppApplication
 import com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel.LibrarianViewModel
-import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Librarian
 import com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel.ViewModelFactory
 
 
@@ -21,7 +20,7 @@ class LibrarianLoginActivity : AppCompatActivity() {
     private lateinit var librarianLoginPassword : EditText
 
     private val librarianViewModel: LibrarianViewModel by viewModels {
-        ViewModelFactory((application as LibrarianApplication).repository)
+        ViewModelFactory((application as AppApplication).repository)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
