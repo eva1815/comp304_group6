@@ -3,14 +3,12 @@ package com.example.group6.alexeva_comp304sec401_lab4_group6
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.group6.alexeva_comp304sec401_lab4_group6.application.AppApplication
-import com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel.LibrarianViewModel
 import com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel.StudentViewModel
 import com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel.ViewModelFactory
 
@@ -47,6 +45,8 @@ class StudentLoginActivity : AppCompatActivity() {
                 studentViewModel.getStudentById(id).observe(this) { student ->
                     if (student != null && student.password == password) {
                         val intent = Intent(this, BooksModuleActivity::class.java)
+                        //Add userRole as switch to show or hide function
+                        intent.putExtra("userRole", "Student")
                         startActivity(intent)
                     } else {
                         Toast.makeText(

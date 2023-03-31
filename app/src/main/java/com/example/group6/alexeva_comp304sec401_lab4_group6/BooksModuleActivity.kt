@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -26,6 +27,8 @@ class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, Book
     private lateinit var booksRecyclerView: RecyclerView
     private lateinit var addBooksButton:Button
     private lateinit var viewModel: BooksViewModel
+
+    private lateinit var userRole: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_books_module)
@@ -41,7 +44,14 @@ class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, Book
         addBooksButton = findViewById(R.id.btn_id_add_books)
         booksRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        val booksRVAdapter = BooksRVAdapter(this,this,this)
+        //If user is student, hide books icon
+        userRole = intent.getStringExtra("userRole") ?: "Student"
+
+        if (userRole == "Student") {
+            addBooksButton.visibility = View.GONE
+        }
+
+        val booksRVAdapter = BooksRVAdapter(this,this,this, userRole)
         booksRecyclerView.adapter = booksRVAdapter
         viewModel = ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(BooksViewModel::class.java)
         viewModel.allBooks.observe(this, Observer{ list->
@@ -62,29 +72,7 @@ class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, Book
         inflater.inflate(R.menu.books_menu, menu)
         return true
     }
-    private fun loadAllBooksFragment() {
-        supportFragmentManager.beginTransaction().replace(R.id.frameToLoad, allBooksFragment)
-            .commit()
-    }
-    private fun loadFictionFragment() {
-        supportFragmentManager.beginTransaction().replace(R.id.frameToLoad, fictionFragment)
-            .commit()
-    }
 
-    private fun loadNonFictionFragment() {
-        supportFragmentManager.beginTransaction().replace(R.id.frameToLoad, nonFictionFragment)
-            .commit()
-    }
-
-    private fun loadEducationalFragment() {
-        supportFragmentManager.beginTransaction().replace(R.id.frameToLoad, educationalFragment)
-            .commit()
-    }
-
-    private fun loadHistoryFragment() {
-        supportFragmentManager.beginTransaction().replace(R.id.frameToLoad, historyFragment)
-            .commit()
-    }
     private fun loadProfileFragment() {
         supportFragmentManager.beginTransaction().replace(R.id.frameToLoad, profileFragment)
             .commit()
@@ -99,27 +87,54 @@ class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, Book
 
     //click books category from menu when user choose books type
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        //Reload RecycleView, According to menu Item selection
+        booksRecyclerView = findViewById(R.id.id_rv_books)
+        val booksRVAdapter = BooksRVAdapter(this,this,this, userRole)
+        booksRecyclerView.adapter = booksRVAdapter
+        viewModel = ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(BooksViewModel::class.java)
         //handle item selection
+
         when (item.itemId) {
             R.id.menu_all_books -> {
                 Toast.makeText(this, "You Selected All Books", Toast.LENGTH_SHORT).show()
-                loadAllBooksFragment()
+                viewModel.allBooks.observe(this, Observer{
+                        list ->list?.let{
+                    booksRVAdapter.updateList(it)
+                }
+                })
             }
             R.id.menu_fiction -> {
                 Toast.makeText(this, "You Selected Fiction", Toast.LENGTH_SHORT).show()
-                loadFictionFragment()
+                viewModel.filterBooksByCategory("Fiction").observe(this, Observer { list ->
+                    list?.let {
+                        booksRVAdapter.updateList(it)
+                    }
+                })
             }
             R.id.menu_non_fiction -> {
                 Toast.makeText(this, "You Selected Non-Fiction", Toast.LENGTH_SHORT).show()
-                loadNonFictionFragment()
+                viewModel.filterBooksByCategory("Non-Fiction").observe(this, Observer { list ->
+                    list?.let {
+                        booksRVAdapter.updateList(it)
+                    }
+                })
             }
             R.id.menu_educational -> {
                 Toast.makeText(this, "You Selected Educational", Toast.LENGTH_SHORT).show()
-                loadEducationalFragment()
+                viewModel.filterBooksByCategory("Educational").observe(this, Observer { list ->
+                    list?.let {
+                        booksRVAdapter.updateList(it)
+                    }
+                })
             }
             R.id.menu_history -> {
                 Toast.makeText(this, "You Selected History", Toast.LENGTH_SHORT).show()
-                loadHistoryFragment()
+                viewModel.filterBooksByCategory("History").observe(this, Observer { list ->
+                    list?.let {
+                        booksRVAdapter.updateList(it)
+                    }
+                })
             }
             R.id.menu_profile -> {
                 Toast.makeText(this, "You Selected Profile", Toast.LENGTH_SHORT).show()

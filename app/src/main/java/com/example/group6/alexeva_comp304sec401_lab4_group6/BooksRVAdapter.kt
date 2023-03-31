@@ -12,7 +12,9 @@ import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Books
 class BooksRVAdapter(
     val context:Context,
     val booksClickDeleteInterface: BooksClickDeleteInterface,
-    val booksClickInterface: BooksClickInterface
+    val booksClickInterface: BooksClickInterface,
+    //Add userRole as switch to show or hide delete button
+    private val userRole: String
     ): RecyclerView.Adapter<BooksRVAdapter.ViewHolder>()
 {
 
@@ -49,13 +51,22 @@ class BooksRVAdapter(
         holder.booksCategoryTextView.setText(allBooks.get(position).category)
         holder.booksQuantityTextView.setText(allBooks.get(position).quantity)
 
-        holder.booksDeleteImageView.setOnClickListener {
-            booksClickDeleteInterface.onDeleteIconClick(allBooks.get(position))
+        //If user is student, hide delete button
+        if (userRole == "Student") {
+            holder.booksDeleteImageView.visibility = View.GONE
+        }
+        //If user is librarian, enable delete and edit function
+        if(userRole == "Librarian"){
+            holder.booksDeleteImageView.setOnClickListener {
+                booksClickDeleteInterface.onDeleteIconClick(allBooks.get(position))
+            }
+
+            holder.itemView.setOnClickListener {
+                booksClickInterface.onBooksClick(allBooks.get(position))
+            }
         }
 
-        holder.itemView.setOnClickListener {
-            booksClickInterface.onBooksClick(allBooks.get(position))
-        }
+
     }
 }
 

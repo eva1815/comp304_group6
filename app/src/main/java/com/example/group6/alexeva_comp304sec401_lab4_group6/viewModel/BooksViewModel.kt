@@ -2,13 +2,9 @@ package com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel
 
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Books
 import com.example.group6.alexeva_comp304sec401_lab4_group6.model.BooksRepository
-import com.example.group6.alexeva_comp304sec401_lab4_group6.model.DatabaseRepository
 import com.example.group6.alexeva_comp304sec401_lab4_group6.model.db.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -43,6 +39,17 @@ class BooksViewModel (application: Application):AndroidViewModel(application){
 
     fun addBooks(books: Books) = viewModelScope.launch (Dispatchers.IO){
         repository.insert(books)
+    }
+
+
+    //The following function is a category filter
+    //Reference: https://developer.android.com/topic/libraries/architecture/livedata
+    //Check the LiveData and ViewModel for more information
+
+    fun filterBooksByCategory(category: String): LiveData<List<Books>> {
+        return allBooks.map { list ->
+            list.filter { it.category == category }
+        }
     }
 
 }
