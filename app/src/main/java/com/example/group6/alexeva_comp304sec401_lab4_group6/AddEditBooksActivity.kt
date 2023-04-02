@@ -27,6 +27,9 @@ class AddEditBooksActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit_books)
 
+        intent.putExtra("userRole","Librarian")
+
+
         booksTitleEditText = findViewById(R.id.editText_id_books_title)
         booksAuthorNameEditText = findViewById(R.id.editText_id_books_author_name)
         booksDescriptionEditText = findViewById(R.id.editText_id_books_description)
@@ -92,7 +95,10 @@ class AddEditBooksActivity : AppCompatActivity() {
 
                 }
             }
-            startActivity(Intent(applicationContext,BooksModuleActivity::class.java))
+            val intent = Intent(this, BooksModuleActivity::class.java)
+            //Add userRole as switch to show or hide function
+            intent.putExtra("userRole","Librarian")
+            startActivity(intent)
             this.finish()
         }
     }
