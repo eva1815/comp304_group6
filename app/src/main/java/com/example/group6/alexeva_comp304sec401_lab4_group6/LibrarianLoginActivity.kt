@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.group6.alexeva_comp304sec401_lab4_group6.application.AppApplication
+import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Librarian
 import com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel.LibrarianViewModel
 import com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel.ViewModelFactory
 
@@ -26,9 +27,9 @@ class LibrarianLoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_librarian_login)
 
-        //Add dummy data to librarian_table, uncomment as needed
-//        librarianViewModel.insert((Librarian("001", "Yash", "Sheth", "COMP304")))
-//        librarianViewModel.insert((Librarian("007","James","Bond", "CasinoRoyale")))
+        //Add dummy data to librarian_table
+        librarianViewModel.insert((Librarian("001", "Yash", "Sheth", "COMP304")))
+        librarianViewModel.insert((Librarian("007","James","Bond", "CasinoRoyale")))
 
         librarianLoginPageButton = findViewById(R.id.btn_librarian_login)
         librarianLoginID = findViewById(R.id.librarian_login_id)
