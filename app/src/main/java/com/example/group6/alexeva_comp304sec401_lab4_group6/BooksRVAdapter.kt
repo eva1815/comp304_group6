@@ -11,8 +11,10 @@ import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Books
 
 class BooksRVAdapter(
     val context:Context,
-    val booksClickDeleteInterface: BooksClickDeleteInterface,
-    val booksClickInterface: BooksClickInterface,
+    private val booksClickDeleteInterface: BooksClickDeleteInterface,
+    private val booksClickInterface: BooksClickInterface,
+    // Add the booksClickBorrowedInterface parameter
+    private val booksClickBorrowedInterface: BooksClickBorrowedInterface,
     //Add userRole as switch to show or hide delete button
     private val userRole: String
     ): RecyclerView.Adapter<BooksRVAdapter.ViewHolder>()
@@ -21,12 +23,13 @@ class BooksRVAdapter(
     private val allBooks = ArrayList<Books>()
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val booksTitleTextView = itemView.findViewById<TextView>(R.id.textView_id_books_title)
-        val booksAuthorNameTextView = itemView.findViewById<TextView>(R.id.textView_id_books_author_name)
-        val booksDescriptionTextView = itemView.findViewById<TextView>(R.id.textView_id_books_description)
-        val booksCategoryTextView = itemView.findViewById<TextView>(R.id.textView_id_books_category)
-        val booksQuantityTextView = itemView.findViewById<TextView>(R.id.textView_id_books_quantity)
-        val booksDeleteImageView = itemView.findViewById<ImageView>(R.id.imageView_delete_btn)
+        val booksTitleTextView: TextView = itemView.findViewById<TextView>(R.id.textView_id_books_title)
+        val booksAuthorNameTextView: TextView = itemView.findViewById<TextView>(R.id.textView_id_books_author_name)
+        val booksDescriptionTextView: TextView = itemView.findViewById<TextView>(R.id.textView_id_books_description)
+        val booksCategoryTextView: TextView = itemView.findViewById<TextView>(R.id.textView_id_books_category)
+        val booksQuantityTextView: TextView = itemView.findViewById<TextView>(R.id.textView_id_books_quantity)
+        val booksDeleteImageView: ImageView = itemView.findViewById<ImageView>(R.id.imageView_delete_btn)
+        val booksBorrowImageView: ImageView = itemView.findViewById<ImageView>(R.id.imageView_borrow_btn)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -45,24 +48,32 @@ class BooksRVAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.booksTitleTextView.setText(allBooks.get(position).bookName)
-        holder.booksAuthorNameTextView.setText(allBooks.get(position).authorName)
-        holder.booksDescriptionTextView.setText(allBooks.get(position).bookDescription)
-        holder.booksCategoryTextView.setText(allBooks.get(position).category)
-        holder.booksQuantityTextView.setText(allBooks.get(position).quantity)
+        holder.booksTitleTextView.text = allBooks[position].bookName
+        holder.booksAuthorNameTextView.text = allBooks[position].authorName
+        holder.booksDescriptionTextView.text = allBooks[position].bookDescription
+        holder.booksCategoryTextView.text = allBooks[position].category
+        holder.booksQuantityTextView.text = allBooks[position].quantity
 
         //If user is student, hide delete button
         if (userRole == "Student") {
             holder.booksDeleteImageView.visibility = View.GONE
+            holder.booksBorrowImageView.visibility = View.VISIBLE
+
+        }
+        holder.booksBorrowImageView.setOnClickListener {
+            booksClickBorrowedInterface.onBorrowIconClick(allBooks[position])
         }
         //If user is librarian, enable delete and edit function
         if(userRole == "Librarian"){
+            holder.booksDeleteImageView.visibility = View.VISIBLE
+            holder.booksBorrowImageView.visibility = View.GONE
+
             holder.booksDeleteImageView.setOnClickListener {
-                booksClickDeleteInterface.onDeleteIconClick(allBooks.get(position))
+                booksClickDeleteInterface.onDeleteIconClick(allBooks[position])
             }
 
             holder.itemView.setOnClickListener {
-                booksClickInterface.onBooksClick(allBooks.get(position))
+                booksClickInterface.onBooksClick(allBooks[position])
             }
         }
 
@@ -76,4 +87,8 @@ interface BooksClickDeleteInterface{
 
 interface BooksClickInterface{
     fun onBooksClick(books: Books)
+}
+
+interface BooksClickBorrowedInterface {
+    fun onBorrowIconClick(book: Books)
 }

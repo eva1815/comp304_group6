@@ -40,6 +40,9 @@ class BooksViewModel (application: Application):AndroidViewModel(application){
     fun addBooks(books: Books) = viewModelScope.launch (Dispatchers.IO){
         repository.insert(books)
     }
+    fun getBooksByIds(bookIds: List<Int>): LiveData<List<Books>> {
+        return repository.getBooksByIds(bookIds)
+    }
 
 
     //The following function is a category filter

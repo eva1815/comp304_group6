@@ -21,17 +21,17 @@ class LibrarianViewModel(private val repository: DatabaseRepository): ViewModel(
         repository.insert(librarian)
     }
 
-    fun update(input: String, newInput: String){
-        viewModelScope.launch {
-//            for(p in allLibrarian.value!!){
-//                if(p.name == input){
-//                    p.name = newInput
-//                    repository.update(p)
-//                    println("${p.id} - ${p.name} - ${p.role}")
-//                }
-//            }
-        }
-    }
+//    fun update(input: String, newInput: String){
+//        viewModelScope.launch {
+////            for(p in allLibrarian.value!!){
+////                if(p.name == input){
+////                    p.name = newInput
+////                    repository.update(p)
+////                    println("${p.id} - ${p.name} - ${p.role}")
+////                }
+////            }
+//        }
+//    }
 
     fun delete(input: String){
         viewModelScope.launch {

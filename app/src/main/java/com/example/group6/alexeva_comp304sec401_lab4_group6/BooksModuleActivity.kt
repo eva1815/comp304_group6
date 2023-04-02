@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Books
 import com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel.BooksViewModel
 
-class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, BooksClickInterface {
+class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, BooksClickInterface, BooksClickBorrowedInterface {
     private lateinit var allBooksFragment: AllBooksFragment
     private lateinit var fictionFragment: FictionFragment
     private lateinit var nonFictionFragment: NonFictionFragment
@@ -27,6 +27,9 @@ class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, Book
     private lateinit var booksRecyclerView: RecyclerView
     private lateinit var addBooksButton:Button
     private lateinit var viewModel: BooksViewModel
+
+    //To store borrowed book id
+    private val borrowedBookIds = mutableListOf<Int>()
 
     private lateinit var userRole: String
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,14 +54,14 @@ class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, Book
             addBooksButton.visibility = View.GONE
         }
 
-        val booksRVAdapter = BooksRVAdapter(this,this,this, userRole)
+        val booksRVAdapter = BooksRVAdapter(this,this,this, this, userRole)
         booksRecyclerView.adapter = booksRVAdapter
         viewModel = ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(BooksViewModel::class.java)
-        viewModel.allBooks.observe(this, Observer{ list->
-            list?.let{
+        viewModel.allBooks.observe(this) { list ->
+            list?.let {
                 booksRVAdapter.updateList(it)
             }
-        })
+        }
         addBooksButton.setOnClickListener{
             val intent = Intent(this@BooksModuleActivity,AddEditBooksActivity::class.java)
             startActivity(intent)
@@ -74,8 +77,11 @@ class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, Book
     }
 
     private fun loadProfileFragment() {
-        supportFragmentManager.beginTransaction().replace(R.id.frameToLoad, profileFragment)
-            .commit()
+        val bundle = Bundle()
+        //Put all borrowedBookID to profile fragment.
+        bundle.putIntegerArrayList("borrowedBookIds", ArrayList(borrowedBookIds))
+        profileFragment.arguments = bundle
+        supportFragmentManager.beginTransaction().replace(R.id.frameToLoad, profileFragment).commit()
     }
 
     private fun loadLogOutFragment() {
@@ -90,9 +96,14 @@ class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, Book
 
         //Reload RecycleView, According to menu Item selection
         booksRecyclerView = findViewById(R.id.id_rv_books)
-        val booksRVAdapter = BooksRVAdapter(this,this,this, userRole)
+        val booksRVAdapter = BooksRVAdapter(this,this,this, this, userRole)
         booksRecyclerView.adapter = booksRVAdapter
         viewModel = ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(BooksViewModel::class.java)
+
+        //Close profile if it currently open
+        if (profileFragment.isVisible) {
+            supportFragmentManager.beginTransaction().remove(profileFragment).commit()
+        }
         //handle item selection
 
         when (item.itemId) {
@@ -106,35 +117,35 @@ class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, Book
             }
             R.id.menu_fiction -> {
                 Toast.makeText(this, "You Selected Fiction", Toast.LENGTH_SHORT).show()
-                viewModel.filterBooksByCategory("Fiction").observe(this, Observer { list ->
+                viewModel.filterBooksByCategory("Fiction").observe(this) { list ->
                     list?.let {
                         booksRVAdapter.updateList(it)
                     }
-                })
+                }
             }
             R.id.menu_non_fiction -> {
                 Toast.makeText(this, "You Selected Non-Fiction", Toast.LENGTH_SHORT).show()
-                viewModel.filterBooksByCategory("Non-Fiction").observe(this, Observer { list ->
+                viewModel.filterBooksByCategory("Non-Fiction").observe(this) { list ->
                     list?.let {
                         booksRVAdapter.updateList(it)
                     }
-                })
+                }
             }
             R.id.menu_educational -> {
                 Toast.makeText(this, "You Selected Educational", Toast.LENGTH_SHORT).show()
-                viewModel.filterBooksByCategory("Educational").observe(this, Observer { list ->
+                viewModel.filterBooksByCategory("Educational").observe(this) { list ->
                     list?.let {
                         booksRVAdapter.updateList(it)
                     }
-                })
+                }
             }
             R.id.menu_history -> {
                 Toast.makeText(this, "You Selected History", Toast.LENGTH_SHORT).show()
-                viewModel.filterBooksByCategory("History").observe(this, Observer { list ->
+                viewModel.filterBooksByCategory("History").observe(this) { list ->
                     list?.let {
                         booksRVAdapter.updateList(it)
                     }
-                })
+                }
             }
             R.id.menu_profile -> {
                 Toast.makeText(this, "You Selected Profile", Toast.LENGTH_SHORT).show()
@@ -167,5 +178,11 @@ class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, Book
         intent.putExtra("bookId", books.bookId)
         startActivity(intent)
         this.finish()
+    }
+    override fun onBorrowIconClick(book: Books) {
+        // Handle the borrow action
+        borrowedBookIds.add(book.bookId)
+        // Store the borrowed book's ID or perform any other action as needed
+        Toast.makeText(this, "Borrowed book: ${book.bookName}", Toast.LENGTH_SHORT).show()
     }
 }

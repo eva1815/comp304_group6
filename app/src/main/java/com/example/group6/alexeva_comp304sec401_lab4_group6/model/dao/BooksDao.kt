@@ -18,5 +18,8 @@ interface BooksDao {
     //remove books in
     @Delete
     suspend fun delete(books: Books)
+    //Get books by ID
+    @Query("SELECT * FROM books_table WHERE bookId IN (:bookIds)")
+    fun getBooksByIds(bookIds: List<Int>): LiveData<List<Books>>
 
 }

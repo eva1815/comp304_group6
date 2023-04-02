@@ -21,4 +21,7 @@ class BooksRepository (private val booksDao:BooksDao){
     suspend fun delete(books: Books) {
         booksDao.delete(books)
     }
+    fun getBooksByIds(bookIds: List<Int>): LiveData<List<Books>> {
+        return booksDao.getBooksByIds(bookIds)
+    }
 }
