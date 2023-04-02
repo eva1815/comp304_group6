@@ -17,4 +17,8 @@
     <string name="centennial_college_logo">Centennial college Logo</string>
     <string name="librarian_id">LibrarianID</string>
     <string name="librarian_password">LibrarianPassword</string>
+    <string name="books_title">Books Title</string>
+    <string name="description">Description</string>
+    <string name="category">Category</string>
+    <string name="quantity">Quantity</string>
 </resources>
