@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".AddEditBooksActivity">
 
+
     <EditText
         android:id="@+id/editText_id_books_title"
         android:layout_width="match_parent"

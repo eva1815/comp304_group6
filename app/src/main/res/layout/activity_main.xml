@@ -8,36 +8,52 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="16dp"
-    >
+    style="@style/AppTheme">
 
     <ImageView
         android:id="@+id/image_college_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:src="@drawable/college_logo"/>
 
     <Button
         android:id="@+id/btn_librarian_login_home_page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@drawable/librarian_btn"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:padding="10dp"
         android:text="@string/button_librarian_login"/>
 
     <Button
         android:id="@+id/btn_student_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/student_btn"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
         android:text="@string/button_student_login"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
         android:text="@string/textview_new_here_please_sign_up" />
 
     <Button
         android:id="@+id/btn_student_sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/student_sign_up_btn"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
         android:text="@string/button_student_sign_up"/>
 
 

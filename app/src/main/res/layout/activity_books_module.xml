@@ -8,6 +8,7 @@
     android:gravity="center"
     tools:context=".BooksModuleActivity">
 
+
     <FrameLayout
         android:id="@+id/frameToLoad"
         android:layout_width="match_parent"
@@ -20,12 +21,21 @@
         android:layout_height="match_parent"
         tools:listitem="@layout/books_rv_item"/>
 
-    <Button
+
+    
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_id_add_books"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
-        android:text="Add" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:src="@drawable/icon_add_btn"
+        android:tint="@color/white"
+        android:backgroundTint="@color/dark_yellow"/>
+
+
+
 
 
 </RelativeLayout>

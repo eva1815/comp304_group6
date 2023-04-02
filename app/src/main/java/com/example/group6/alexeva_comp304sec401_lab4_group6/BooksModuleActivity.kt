@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.group6.alexeva_comp304sec401_lab4_group6.entity.Books
 import com.example.group6.alexeva_comp304sec401_lab4_group6.viewModel.BooksViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, BooksClickInterface, BooksClickBorrowedInterface {
     private lateinit var allBooksFragment: AllBooksFragment
@@ -25,7 +26,7 @@ class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, Book
     private lateinit var logOutFragment: LogOutFragment
 
     private lateinit var booksRecyclerView: RecyclerView
-    private lateinit var addBooksButton:Button
+    private lateinit var addBooksButton:FloatingActionButton
     private lateinit var viewModel: BooksViewModel
 
     //To store borrowed book id
@@ -153,7 +154,8 @@ class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, Book
             }
             R.id.menu_log_out -> {
                 Toast.makeText(this, "You Selected Log Out", Toast.LENGTH_SHORT).show()
-                loadLogOutFragment()
+                val intent = Intent(this,MainActivity::class.java)
+                startActivity(intent)
             }
             else -> return super.onOptionsItemSelected(item)
 

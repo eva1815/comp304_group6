@@ -17,4 +17,6 @@ class AllBooksFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_all_books, container, false)
     }
 
+
+
 }
