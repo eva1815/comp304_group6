@@ -182,6 +182,9 @@ class BooksModuleActivity : AppCompatActivity(), BooksClickDeleteInterface, Book
     override fun onBorrowIconClick(book: Books) {
         // Handle the borrow action
         borrowedBookIds.add(book.bookId)
+        book.decreaseQuantity()
+        // Update the book in the database
+        viewModel.updateBooks(book)
         // Store the borrowed book's ID or perform any other action as needed
         Toast.makeText(this, "Borrowed book: ${book.bookName}", Toast.LENGTH_SHORT).show()
     }

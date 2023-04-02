@@ -48,11 +48,14 @@ class BooksRVAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.booksTitleTextView.text = allBooks[position].bookName
-        holder.booksAuthorNameTextView.text = allBooks[position].authorName
-        holder.booksDescriptionTextView.text = allBooks[position].bookDescription
-        holder.booksCategoryTextView.text = allBooks[position].category
-        holder.booksQuantityTextView.text = allBooks[position].quantity
+
+        val currentItem = allBooks[position]
+
+        holder.booksTitleTextView.text = "Book Title: ${currentItem.bookName}"
+        holder.booksAuthorNameTextView.text = "Author Name: ${currentItem.authorName}"
+        holder.booksDescriptionTextView.text = "Description: ${currentItem.bookDescription}"
+        holder.booksCategoryTextView.text = "Category: ${currentItem.category}"
+        holder.booksQuantityTextView.text = "Quantity: ${currentItem.quantity}"
 
         //If user is student, hide delete button
         if (userRole == "Student") {

@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "books_table")
 class Books(
 
+
     @ColumnInfo(name = "bookName")
     var bookName: String,
 
@@ -24,4 +25,7 @@ class Books(
 ){
     @PrimaryKey(autoGenerate = true)
     var bookId=0
+    fun decreaseQuantity() {
+        quantity = (quantity.toInt() - 1).toString()
+    }
 }
